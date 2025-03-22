@@ -1,0 +1,46 @@
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:8080"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders: "*"
+            allowCredentials: true
+            maxAge: 3600
+        add-to-simple-url-handler-mapping: true
+
+      routes:
+        - id: profile_service
+          uri: ${PROFILE_URL}
+          predicates:
+            - Path= ${PROFILE_PATH}
+        - id: reports-Service
+          uri: ${REPORTS_URL}
+          predicates:
+            - Path= ${REPORTS_PATH}
+        - id: advertising_service
+          uri: ${ADVERTISING_URL}
+          predicates:
+            - Path= ${ADVERTISING_PATH}
+        - id: recipe_service
+          uri: ${RECIPE_URL}
+          predicates:
+            - Path= ${RECIPE_PATH}
+        - id: strapi_service
+          uri: ${STRAPI_URL}
+          predicates:
+            - Path= ${STRAPI_PATH}
+
+server:
+  port: 8000  # Puerto en el que se ejecuta el API Gateway
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
