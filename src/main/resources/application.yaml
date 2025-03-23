@@ -21,7 +21,7 @@ spring:
           uri: ${PROFILE_URL}
           predicates:
             - Path= ${PROFILE_PATH}
-        - id: reports-Service
+        - id: reports_Service
           uri: ${REPORTS_URL}
           predicates:
             - Path= ${REPORTS_PATH}
@@ -39,8 +39,8 @@ spring:
             - Path= ${STRAPI_PATH}
 
 server:
-  port: 8000  # Puerto en el que se ejecuta el API Gateway
+  port: ${API_PORT}
 
 logging:
   level:
-    org.springframework.cloud.gateway: DEBUG
+    org.springframework.cloud.gateway: ${DEBUG}
