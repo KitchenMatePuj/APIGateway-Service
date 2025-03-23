@@ -37,6 +37,10 @@ spring:
           uri: ${STRAPI_URL}
           predicates:
             - Path= ${STRAPI_PATH}
+        - id: recommendations_service
+          uri: ${RECOMMENDATIONS_URL}
+          predicates:
+            - Path= ${RECOMMENDATIONS_PATH}
 
 server:
   port: ${API_PORT}
