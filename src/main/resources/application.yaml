@@ -25,22 +25,36 @@ spring:
           uri: ${REPORTS_URL}
           predicates:
             - Path= ${REPORTS_PATH}
+          filters:
+            - StripPrefix=1
+
         - id: advertising_service
           uri: ${ADVERTISING_URL}
           predicates:
             - Path= ${ADVERTISING_PATH}
+          filters:
+            - StripPrefix=1
+          
         - id: recipe_service
           uri: ${RECIPE_URL}
           predicates:
             - Path= ${RECIPE_PATH}
+          filters:
+            - StripPrefix=1
+          
         - id: strapi_service
           uri: ${STRAPI_URL}
           predicates:
             - Path= ${STRAPI_PATH}
+          filters:
+            - StripPrefix=1
+          
         - id: recommendations_service
           uri: ${RECOMMENDATIONS_URL}
           predicates:
             - Path= ${RECOMMENDATIONS_PATH}
+          filters:
+            - StripPrefix=1
 
 server:
   port: ${API_PORT}
