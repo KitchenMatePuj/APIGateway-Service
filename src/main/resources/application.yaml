@@ -1,4 +1,10 @@
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${KEYCLOAK_URL}/realms/${REALM_NAME}
+
   cloud:
     gateway:
       globalcors:
@@ -27,32 +33,34 @@ spring:
             - Path= ${REPORTS_PATH}
           filters:
             - StripPrefix=1
-
         - id: advertising_service
           uri: ${ADVERTISING_URL}
           predicates:
             - Path= ${ADVERTISING_PATH}
           filters:
             - StripPrefix=1
-          
         - id: recipe_service
           uri: ${RECIPE_URL}
           predicates:
             - Path= ${RECIPE_PATH}
           filters:
             - StripPrefix=1
-          
         - id: strapi_service
           uri: ${STRAPI_URL}
           predicates:
             - Path= ${STRAPI_PATH}
           filters:
             - StripPrefix=1
-          
         - id: recommendations_service
           uri: ${RECOMMENDATIONS_URL}
           predicates:
             - Path= ${RECOMMENDATIONS_PATH}
+          filters:
+            - StripPrefix=1
+        - id: auth-service
+          uri: ${AUTH_URL}
+          predicates:
+            - Path= ${AUTH_PATH}
           filters:
             - StripPrefix=1
 
@@ -62,3 +70,5 @@ server:
 logging:
   level:
     org.springframework.cloud.gateway: ${DEBUG}
+    org.springframework.security: ${DEBUG}
+    org.springframework.security.oauth2: ${DEBUG}
