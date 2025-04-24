@@ -11,6 +11,8 @@ spring:
         cors-configurations:
           '[/**]':
             allowedOrigins: ${FRONTEND_URL}
+            allowedOrigins: 
+              - "${FRONTEND_URL}"
             allowedMethods:
               - GET
               - POST
@@ -27,6 +29,9 @@ spring:
           uri: ${PROFILE_URL}
           predicates:
             - Path= ${PROFILE_PATH}
+          filters:
+            - StripPrefix=1
+            
         - id: reports_Service
           uri: ${REPORTS_URL}
           predicates:
