@@ -17,18 +17,18 @@ public class SecurityConfig {
     private String authPathPattern;
 
     @Bean
-    public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
-        http
-                .csrf(ServerHttpSecurity.CsrfSpec::disable)
-                .authorizeExchange(exchanges -> exchanges
-                        .pathMatchers(authPathPattern).permitAll()
-                        .pathMatchers("/strapi/uploads/**").permitAll()
-                        .pathMatchers("/strapi/api/upload").permitAll()
-                        .anyExchange().authenticated()
-                )
-                .oauth2ResourceServer(oauth2 -> oauth2
-                        .jwt(Customizer.withDefaults())
-                );
-        return http.build();
-    }
+public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
+    http
+        .csrf(ServerHttpSecurity.CsrfSpec::disable)
+        .authorizeExchange(exchanges -> exchanges
+            .pathMatchers(authPathPattern).permitAll()
+            .pathMatchers("/strapi/uploads/**").permitAll() // Ver imágenes
+            .pathMatchers("/strapi/api/upload").permitAll() // Subir imágenes
+            .anyExchange().authenticated()
+        )
+        .oauth2ResourceServer(oauth2 -> oauth2
+            .jwt(Customizer.withDefaults())
+        );
+    return http.build();
+}
 }
