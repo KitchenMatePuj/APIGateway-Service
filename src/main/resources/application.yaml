@@ -11,8 +11,6 @@ spring:
         cors-configurations:
           '[/**]':
             allowedOrigins: ${FRONTEND_URL}
-            allowedOrigins: 
-              - "${FRONTEND_URL}"
             allowedMethods:
               - GET
               - POST
