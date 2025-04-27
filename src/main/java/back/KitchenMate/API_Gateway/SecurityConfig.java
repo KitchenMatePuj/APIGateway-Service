@@ -17,7 +17,7 @@ public class SecurityConfig {
     private String authPathPattern;
 
     @Bean
-public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
+    public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
     http
         .csrf(ServerHttpSecurity.CsrfSpec::disable)
         .authorizeExchange(exchanges -> exchanges
@@ -30,5 +30,5 @@ public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
             .jwt(Customizer.withDefaults())
         );
     return http.build();
-}
+    }
 }
