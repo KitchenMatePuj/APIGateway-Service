@@ -23,6 +23,7 @@ public class SecurityConfig {
                 .authorizeExchange(exchanges -> exchanges
                         .pathMatchers(authPathPattern).permitAll()
                         .pathMatchers("/strapi/uploads/**").permitAll()
+                        .pathMatchers("/strapi/api/upload").permitAll()
                         .anyExchange().authenticated()
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2
