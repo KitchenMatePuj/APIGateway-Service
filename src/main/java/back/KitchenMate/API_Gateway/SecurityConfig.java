@@ -33,7 +33,8 @@ public class SecurityConfig {
             .authorizeExchange(exchanges -> exchanges
                 .pathMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .pathMatchers(authPathPattern).permitAll()
-                .pathMatchers("/recipe/ingredients/", "/recipe/ingredients/**").permitAll()               
+                .pathMatchers("/recipe/ingredients/", "/recipe/ingredients/**").permitAll()
+                .pathMatchers("/profile/profiles/").permitAll()
                 .pathMatchers("/strapi/uploads/**").permitAll()
                 .pathMatchers("/strapi/api/upload").permitAll()
                 .anyExchange().authenticated() 
